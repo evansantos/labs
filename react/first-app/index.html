@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>First App</title>
+  <script type="text/javascript" src="https://fb.me/react-0.14.8.js"></script>
+  <script type="text/javascript" src="https://fb.me/react-dom-0.14.8.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+</head>
+<body>
+</body>
+<script type="text/jsx">
+  // define a react component class
+  var HelloWorld = React.createClass( {
+    render: function () {
+      return <div>
+      Hello World
+      </div>
+    }
+  } ) ;
+
+  // ask react to render this class
+  var element = React.createElement( HelloWorld ) ;
+
+  // when we ask react to render this class, we will tell it where
+  // to place the rendered element in dom
+  ReactDOM.render(element,document.body) ;
+</script>
+</html>
