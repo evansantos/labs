@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>First App</title>
+  <script type="text/javascript" src="https://fb.me/react-0.14.8.js"></script>
+  <script type="text/javascript" src="https://fb.me/react-dom-0.14.8.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 target">
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/jsx">
+
+  var Badge = React.createClass( {
+    render: function () {
+      this.props
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  } ) ;
+
+  var Thumbnail = React.createClass({
+    render: function() {
+      return <div className="thumbnail">
+        <img src={this.props.imageUrl} />
+        <div className="caption">
+          <h3>{this.props.header}</h3>
+          <p>{this.props.description}</p>
+          <p>
+            <Badge title={this.props.title} number={this.props.number}/>
+          </p>
+        </div>
+      </div>
+    }
+  })
+
+  var options = {
+    title: 'See Tutorials',
+    number: 32,
+    header: 'Learn React',
+    description: 'React is fanstastic new library to make stuff!',
+    imageUrl: 'http://formatjs.io/img/react.svg'
+  };
+
+  // ask react to render this class
+  var element = React.createElement( Thumbnail, options ) ;
+
+  // when we ask react to render this class, we will tell it where
+  // to place the rendered element in dom
+  ReactDOM.render(element,document.querySelector('.target')) ;
+</script>
+</html>
