@@ -1,3 +1,7 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+var ThumbnailList = require('./thumbnail-list');
+
 var options = {
   thumbnailData: [{
     title: 'Show Courses',
