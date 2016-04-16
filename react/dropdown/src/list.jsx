@@ -6,10 +6,10 @@ var ListItem = require('./list-item');
 module.exports = React.createClass({
   render: function() {
     var list = this.props.items.map(function(item){
-        return <ListItem item={item} /> 
+        return <ListItem item={item} />
     });
 
-    return <ul>
+    return <ul className="dropdown-menu">
       {list}
     </ul>
   }
