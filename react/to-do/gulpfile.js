@@ -42,17 +42,19 @@ var bundler = watchify(browserify({
   fullPaths: true
 }));
 
-function bundle() {
+function bundle(file) {
+  if(file) gutil.log('Recompiling ' + file + '...');
   return bundler
-    .bundle()
-    .on('error', notify)
-    .pipe(source('main.js'))
-    .pipe(gulp.dest('./'))
+   .bundle()
+   .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+   .pipe(source('main.js'))
+   .pipe(gulp.dest('./'));
 }
+
 bundler.on('update', bundle);
 
 gulp.task('build', function() {
-  bundle()
+  bundle();
 });
 
 gulp.task('serve', function(done) {
@@ -62,9 +64,9 @@ gulp.task('serve', function(done) {
         enable: true,
         filter: function(filePath, cb) {
           if(/main.js/.test(filePath)) {
-            cb(true)
+            cb(true);
           } else if(/style.css/.test(filePath)){
-            cb(true)
+            cb(true);
           }
         }
       },
